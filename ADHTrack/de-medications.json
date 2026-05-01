@@ -39,7 +39,7 @@
       "form": "Lösung zum Einnehmen",
       "releaseProfile": "prodrug",
       "dosages": [
-        { "value": 1, "unit": "mg/ml", "pzn": null }
+        { "value": 10, "unit": "mg/ml", "pzn": null }
       ],
       "regulatory": {
         "btm": true,
