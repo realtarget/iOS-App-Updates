@@ -1,10 +1,10 @@
 {
-  "version": "2026-05-02",
+  "version": "2026-05-13",
   "country": "DE",
   "schema": {
-    "version": "2.0",
+    "version": "2.1",
     "healthKitMappable": true,
-    "notes": "Felder displayName/genericName entsprechen HKUserAnnotatedMedication (iOS 16+). dosages.value + dosages.unit lassen sich direkt zu HKQuantity konvertieren (z. B. HKQuantity(value: value, unit: HKUnit.gramUnit(with: .milli)) für 'mg'). atcCode ist der WHO-ATC-Code. PZN ist als Platzhalter (null) angelegt und sollte aus einer aktuellen Apothekendatenbank (z. B. ABDA, Gelbe Liste) befüllt werden, da PZN packungsspezifisch sind und sich häufig ändern. form, releaseProfile, regulatory und generics sind Custom-Metadata-Erweiterungen, die in HealthKit als metadata-Dictionary auf dem Sample mitgeführt werden können."
+    "notes": "Felder displayName/genericName entsprechen HKUserAnnotatedMedication (iOS 16+). dosages.value + dosages.unit lassen sich direkt zu HKQuantity konvertieren (z. B. HKQuantity(value: value, unit: HKUnit.gramUnit(with: .milli)) für 'mg'). atcCode ist der WHO-ATC-Code. PZN ist als Platzhalter (null) angelegt und sollte aus einer aktuellen Apothekendatenbank (z. B. ABDA, Gelbe Liste) befüllt werden, da PZN packungsspezifisch sind und sich häufig ändern. form, releaseProfile, regulatory und generics sind Custom-Metadata-Erweiterungen, die in HealthKit als metadata-Dictionary auf dem Sample mitgeführt werden können. regulatory.offLabelForADHD ist optional und wird nur bei nicht für ADHS zugelassenen Wirkstoffen (z. B. Bupropion) auf true gesetzt; bei fehlendem Feld gilt false."
   },
   "medications": [
     {
@@ -320,6 +320,26 @@
         "prescriptionRequired": true
       },
       "generics": []
+    },
+    {
+      "displayName": "Elontril",
+      "genericName": "Bupropion",
+      "atcCode": "N06AX12",
+      "form": "Retardtablette",
+      "releaseProfile": "extended-release",
+      "dosages": [
+        { "value": 150, "unit": "mg", "pzn": null },
+        { "value": 300, "unit": "mg", "pzn": null }
+      ],
+      "regulatory": {
+        "btm": false,
+        "prescriptionRequired": true,
+        "offLabelForADHD": true
+      },
+      "generics": [
+        "Bupropion-neuraxpharm",
+        "Bupropion Bluefish"
+      ]
     }
   ]
 }
