@@ -1,344 +1,773 @@
 {
-  "version": "2026-05-13",
+  "version": "2026-05-16",
   "country": "DE",
   "schema": {
-    "version": "2.1",
+    "version": "3.0",
     "healthKitMappable": true,
-    "notes": "Felder displayName/genericName entsprechen HKUserAnnotatedMedication (iOS 16+). dosages.value + dosages.unit lassen sich direkt zu HKQuantity konvertieren (z. B. HKQuantity(value: value, unit: HKUnit.gramUnit(with: .milli)) für 'mg'). atcCode ist der WHO-ATC-Code. PZN ist als Platzhalter (null) angelegt und sollte aus einer aktuellen Apothekendatenbank (z. B. ABDA, Gelbe Liste) befüllt werden, da PZN packungsspezifisch sind und sich häufig ändern. form, releaseProfile, regulatory und generics sind Custom-Metadata-Erweiterungen, die in HealthKit als metadata-Dictionary auf dem Sample mitgeführt werden können. regulatory.offLabelForADHD ist optional und wird nur bei nicht für ADHS zugelassenen Wirkstoffen (z. B. Bupropion) auf true gesetzt; bei fehlendem Feld gilt false."
+    "notes": "Medikamente sind in Kategorien gruppiert. Jede Kategorie hat id, displayName und ein medications-Array. Felder displayName/genericName entsprechen HKUserAnnotatedMedication (iOS 16+). dosages.value + dosages.unit lassen sich direkt zu HKQuantity konvertieren. atcCode ist der WHO-ATC-Code. PZN als null-Platzhalter, aus ABDA/Gelbe Liste befüllen. form, releaseProfile, regulatory, subclass und generics sind Custom-Metadata-Erweiterungen, in HealthKit als metadata-Dictionary auf dem Sample mitführbar. subclass ist optional und nur bei Antidepressiva gesetzt (SSRI/SNRI/TCA/MAOI/NDRI/NaSSA/SARI/Multimodal/Melatonerg). regulatory.offLabelForADHD ist optional und nur bei Wirkstoffen gesetzt, die off-label bei ADHS eingesetzt werden."
   },
-  "medications": [
+  "categories": [
     {
-      "displayName": "Elvanse",
-      "genericName": "Lisdexamfetamin",
-      "atcCode": "N06BA12",
-      "form": "Hartkapsel",
-      "releaseProfile": "prodrug",
-      "dosages": [
-        { "value": 20, "unit": "mg", "pzn": null },
-        { "value": 30, "unit": "mg", "pzn": null },
-        { "value": 40, "unit": "mg", "pzn": null },
-        { "value": 50, "unit": "mg", "pzn": null },
-        { "value": 60, "unit": "mg", "pzn": null },
-        { "value": 70, "unit": "mg", "pzn": null }
-      ],
-      "regulatory": {
-        "btm": true,
-        "prescriptionRequired": true
-      },
-      "generics": [
-        "Lisdexamfetamin AL",
-        "Lisdexamfetamin-ratiopharm",
-        "Lisdexamfetamin STADA",
-        "Lisdex (Aristo)"
+      "id": "adhd-stimulants",
+      "displayName": "ADHS – Stimulanzien",
+      "medications": [
+        {
+          "displayName": "Elvanse",
+          "genericName": "Lisdexamfetamin",
+          "atcCode": "N06BA12",
+          "form": "Hartkapsel",
+          "releaseProfile": "prodrug",
+          "dosages": [
+            { "value": 20, "unit": "mg", "pzn": null },
+            { "value": 30, "unit": "mg", "pzn": null },
+            { "value": 40, "unit": "mg", "pzn": null },
+            { "value": 50, "unit": "mg", "pzn": null },
+            { "value": 60, "unit": "mg", "pzn": null },
+            { "value": 70, "unit": "mg", "pzn": null }
+          ],
+          "regulatory": { "btm": true, "prescriptionRequired": true },
+          "generics": [
+            "Lisdexamfetamin AL",
+            "Lisdexamfetamin-ratiopharm",
+            "Lisdexamfetamin STADA",
+            "Lisdex (Aristo)"
+          ]
+        },
+        {
+          "displayName": "Lisdex",
+          "genericName": "Lisdexamfetamin",
+          "atcCode": "N06BA12",
+          "form": "Lösung zum Einnehmen",
+          "releaseProfile": "prodrug",
+          "dosages": [
+            { "value": 10, "unit": "mg/ml", "pzn": null }
+          ],
+          "regulatory": { "btm": true, "prescriptionRequired": true },
+          "generics": []
+        },
+        {
+          "displayName": "Attentin",
+          "genericName": "Dexamfetamin",
+          "atcCode": "N06BA02",
+          "form": "Tablette",
+          "releaseProfile": "immediate-release",
+          "dosages": [
+            { "value": 5, "unit": "mg", "pzn": null }
+          ],
+          "regulatory": { "btm": true, "prescriptionRequired": true },
+          "generics": []
+        },
+        {
+          "displayName": "Ritalin",
+          "genericName": "Methylphenidat",
+          "atcCode": "N06BA04",
+          "form": "Tablette",
+          "releaseProfile": "immediate-release",
+          "dosages": [
+            { "value": 10, "unit": "mg", "pzn": null }
+          ],
+          "regulatory": { "btm": true, "prescriptionRequired": true },
+          "generics": [
+            "Methylphenidat AL",
+            "Methylphenidat-1A Pharma",
+            "Methylphenidat-ratiopharm",
+            "Methylphenidat HEXAL",
+            "Methylphenidat Sandoz",
+            "Methylphenidat dura",
+            "Methylphenidat Aristo",
+            "Methylphenidat Heumann",
+            "Methylphenidathydrochlorid-neuraxpharm",
+            "Methylphenidat TAD"
+          ]
+        },
+        {
+          "displayName": "Ritalin LA",
+          "genericName": "Methylphenidat",
+          "atcCode": "N06BA04",
+          "form": "Hartkapsel mit veränderter Wirkstofffreisetzung",
+          "releaseProfile": "extended-release",
+          "dosages": [
+            { "value": 10, "unit": "mg", "pzn": null },
+            { "value": 20, "unit": "mg", "pzn": null },
+            { "value": 30, "unit": "mg", "pzn": null },
+            { "value": 40, "unit": "mg", "pzn": null }
+          ],
+          "regulatory": { "btm": true, "prescriptionRequired": true },
+          "generics": [
+            "Methylphenidat AL retardiert",
+            "Methylphenidat-ratiopharm",
+            "Methylphenidat HEXAL retardiert",
+            "Methylphenidat Sandoz retardiert",
+            "Methylphenidat Hennig retardiert",
+            "Methylphenidat Heumann retardiert",
+            "Methylphenidat Zentiva",
+            "Methylphenidathydrochlorid-neuraxpharm retardiert",
+            "Metiphenal"
+          ]
+        },
+        {
+          "displayName": "Ritalin Adult",
+          "genericName": "Methylphenidat",
+          "atcCode": "N06BA04",
+          "form": "Hartkapsel mit veränderter Wirkstofffreisetzung",
+          "releaseProfile": "extended-release",
+          "dosages": [
+            { "value": 10, "unit": "mg", "pzn": null },
+            { "value": 20, "unit": "mg", "pzn": null },
+            { "value": 30, "unit": "mg", "pzn": null },
+            { "value": 40, "unit": "mg", "pzn": null }
+          ],
+          "regulatory": { "btm": true, "prescriptionRequired": true },
+          "generics": [
+            "Methylphenidat-ratiopharm",
+            "Methylphenidat AL retardiert",
+            "Methylphenidat HEXAL retardiert",
+            "Methylphenidat Zentiva"
+          ]
+        },
+        {
+          "displayName": "Medikinet",
+          "genericName": "Methylphenidat",
+          "atcCode": "N06BA04",
+          "form": "Tablette",
+          "releaseProfile": "immediate-release",
+          "dosages": [
+            { "value": 5, "unit": "mg", "pzn": null },
+            { "value": 10, "unit": "mg", "pzn": null },
+            { "value": 20, "unit": "mg", "pzn": null }
+          ],
+          "regulatory": { "btm": true, "prescriptionRequired": true },
+          "generics": [
+            "Methylphenidat AL",
+            "Methylphenidat-1A Pharma",
+            "Methylphenidat-ratiopharm",
+            "Methylphenidat HEXAL",
+            "Methylphenidat Sandoz",
+            "Methylphenidat Aristo",
+            "Methylphenidat Heumann",
+            "Methylphenidathydrochlorid-neuraxpharm"
+          ]
+        },
+        {
+          "displayName": "Medikinet retard",
+          "genericName": "Methylphenidat",
+          "atcCode": "N06BA04",
+          "form": "Hartkapsel mit veränderter Wirkstofffreisetzung",
+          "releaseProfile": "extended-release",
+          "dosages": [
+            { "value": 5, "unit": "mg", "pzn": null },
+            { "value": 10, "unit": "mg", "pzn": null },
+            { "value": 20, "unit": "mg", "pzn": null },
+            { "value": 30, "unit": "mg", "pzn": null },
+            { "value": 40, "unit": "mg", "pzn": null }
+          ],
+          "regulatory": { "btm": true, "prescriptionRequired": true },
+          "generics": [
+            "Methylphenidat AL retardiert",
+            "Methylphenidat-ratiopharm",
+            "Methylphenidat HEXAL retardiert",
+            "Methylphenidat Sandoz retardiert",
+            "Methylphenidat Hennig retardiert",
+            "Methylphenidat Zentiva",
+            "Methylphenidathydrochlorid-neuraxpharm retardiert",
+            "Metiphenal"
+          ]
+        },
+        {
+          "displayName": "Medikinet adult",
+          "genericName": "Methylphenidat",
+          "atcCode": "N06BA04",
+          "form": "Hartkapsel mit veränderter Wirkstofffreisetzung",
+          "releaseProfile": "extended-release",
+          "dosages": [
+            { "value": 5, "unit": "mg", "pzn": null },
+            { "value": 10, "unit": "mg", "pzn": null },
+            { "value": 20, "unit": "mg", "pzn": null },
+            { "value": 30, "unit": "mg", "pzn": null },
+            { "value": 40, "unit": "mg", "pzn": null },
+            { "value": 50, "unit": "mg", "pzn": null },
+            { "value": 60, "unit": "mg", "pzn": null }
+          ],
+          "regulatory": { "btm": true, "prescriptionRequired": true },
+          "generics": []
+        },
+        {
+          "displayName": "Concerta",
+          "genericName": "Methylphenidat",
+          "atcCode": "N06BA04",
+          "form": "Retardtablette",
+          "releaseProfile": "extended-release",
+          "dosages": [
+            { "value": 18, "unit": "mg", "pzn": null },
+            { "value": 27, "unit": "mg", "pzn": null },
+            { "value": 36, "unit": "mg", "pzn": null },
+            { "value": 54, "unit": "mg", "pzn": null }
+          ],
+          "regulatory": { "btm": true, "prescriptionRequired": true },
+          "generics": [
+            "Kinecteen",
+            "Methylphenidat-HCl-ratiopharm Retardtabletten",
+            "Methylphenidathydrochlorid-neuraxpharm Retardtabletten",
+            "Methylphenidat AL Retardtabletten",
+            "Methylphenidat Heumann Retardtabletten"
+          ]
+        },
+        {
+          "displayName": "Equasym retard",
+          "genericName": "Methylphenidat",
+          "atcCode": "N06BA04",
+          "form": "Hartkapsel mit veränderter Wirkstofffreisetzung",
+          "releaseProfile": "extended-release",
+          "dosages": [
+            { "value": 10, "unit": "mg", "pzn": null },
+            { "value": 20, "unit": "mg", "pzn": null },
+            { "value": 30, "unit": "mg", "pzn": null }
+          ],
+          "regulatory": { "btm": true, "prescriptionRequired": true },
+          "generics": []
+        }
       ]
     },
     {
-      "displayName": "Lisdex",
-      "genericName": "Lisdexamfetamin",
-      "atcCode": "N06BA12",
-      "form": "Lösung zum Einnehmen",
-      "releaseProfile": "prodrug",
-      "dosages": [
-        { "value": 10, "unit": "mg/ml", "pzn": null }
-      ],
-      "regulatory": {
-        "btm": true,
-        "prescriptionRequired": true
-      },
-      "generics": []
-    },
-    {
-      "displayName": "Attentin",
-      "genericName": "Dexamfetamin",
-      "atcCode": "N06BA02",
-      "form": "Tablette",
-      "releaseProfile": "immediate-release",
-      "dosages": [
-        { "value": 5, "unit": "mg", "pzn": null }
-      ],
-      "regulatory": {
-        "btm": true,
-        "prescriptionRequired": true
-      },
-      "generics": []
-    },
-    {
-      "displayName": "Ritalin",
-      "genericName": "Methylphenidat",
-      "atcCode": "N06BA04",
-      "form": "Tablette",
-      "releaseProfile": "immediate-release",
-      "dosages": [
-        { "value": 10, "unit": "mg", "pzn": null }
-      ],
-      "regulatory": {
-        "btm": true,
-        "prescriptionRequired": true
-      },
-      "generics": [
-        "Methylphenidat AL",
-        "Methylphenidat-1A Pharma",
-        "Methylphenidat-ratiopharm",
-        "Methylphenidat HEXAL",
-        "Methylphenidat Sandoz",
-        "Methylphenidat dura",
-        "Methylphenidat Aristo",
-        "Methylphenidat Heumann",
-        "Methylphenidathydrochlorid-neuraxpharm",
-        "Methylphenidat TAD"
+      "id": "adhd-non-stimulants",
+      "displayName": "ADHS – Nicht-Stimulanzien",
+      "medications": [
+        {
+          "displayName": "Strattera",
+          "genericName": "Atomoxetin",
+          "atcCode": "N06BA09",
+          "form": "Hartkapsel",
+          "releaseProfile": "immediate-release",
+          "dosages": [
+            { "value": 10, "unit": "mg", "pzn": null },
+            { "value": 18, "unit": "mg", "pzn": null },
+            { "value": 25, "unit": "mg", "pzn": null },
+            { "value": 40, "unit": "mg", "pzn": null },
+            { "value": 60, "unit": "mg", "pzn": null },
+            { "value": 80, "unit": "mg", "pzn": null },
+            { "value": 100, "unit": "mg", "pzn": null }
+          ],
+          "regulatory": { "btm": false, "prescriptionRequired": true },
+          "generics": [
+            "Atomoxetin-1A Pharma",
+            "Atomoxetin Accord",
+            "Atomoxetin AL",
+            "Atomoxetin betapharm",
+            "Atomoxetin Glenmark",
+            "Atomoxetin HEXAL",
+            "Atomoxetin Heumann",
+            "Atomoxetin neuraxpharm",
+            "Atomoxetin Puren",
+            "Atomoxetin-ratiopharm",
+            "Atomoxetin Zentiva"
+          ]
+        },
+        {
+          "displayName": "Strattera",
+          "genericName": "Atomoxetin",
+          "atcCode": "N06BA09",
+          "form": "Lösung zum Einnehmen",
+          "releaseProfile": "immediate-release",
+          "dosages": [
+            { "value": 4, "unit": "mg/ml", "pzn": null }
+          ],
+          "regulatory": { "btm": false, "prescriptionRequired": true },
+          "generics": []
+        },
+        {
+          "displayName": "Intuniv",
+          "genericName": "Guanfacin",
+          "atcCode": "C02AC02",
+          "form": "Retardtablette",
+          "releaseProfile": "extended-release",
+          "dosages": [
+            { "value": 1, "unit": "mg", "pzn": null },
+            { "value": 2, "unit": "mg", "pzn": null },
+            { "value": 3, "unit": "mg", "pzn": null },
+            { "value": 4, "unit": "mg", "pzn": null }
+          ],
+          "regulatory": { "btm": false, "prescriptionRequired": true },
+          "generics": []
+        }
       ]
     },
     {
-      "displayName": "Ritalin LA",
-      "genericName": "Methylphenidat",
-      "atcCode": "N06BA04",
-      "form": "Hartkapsel mit veränderter Wirkstofffreisetzung",
-      "releaseProfile": "extended-release",
-      "dosages": [
-        { "value": 10, "unit": "mg", "pzn": null },
-        { "value": 20, "unit": "mg", "pzn": null },
-        { "value": 30, "unit": "mg", "pzn": null },
-        { "value": 40, "unit": "mg", "pzn": null }
-      ],
-      "regulatory": {
-        "btm": true,
-        "prescriptionRequired": true
-      },
-      "generics": [
-        "Methylphenidat AL retardiert",
-        "Methylphenidat-ratiopharm",
-        "Methylphenidat HEXAL retardiert",
-        "Methylphenidat Sandoz retardiert",
-        "Methylphenidat Hennig retardiert",
-        "Methylphenidat Heumann retardiert",
-        "Methylphenidat Zentiva",
-        "Methylphenidathydrochlorid-neuraxpharm retardiert",
-        "Metiphenal"
-      ]
-    },
-    {
-      "displayName": "Ritalin Adult",
-      "genericName": "Methylphenidat",
-      "atcCode": "N06BA04",
-      "form": "Hartkapsel mit veränderter Wirkstofffreisetzung",
-      "releaseProfile": "extended-release",
-      "dosages": [
-        { "value": 10, "unit": "mg", "pzn": null },
-        { "value": 20, "unit": "mg", "pzn": null },
-        { "value": 30, "unit": "mg", "pzn": null },
-        { "value": 40, "unit": "mg", "pzn": null }
-      ],
-      "regulatory": {
-        "btm": true,
-        "prescriptionRequired": true
-      },
-      "generics": [
-        "Methylphenidat-ratiopharm",
-        "Methylphenidat AL retardiert",
-        "Methylphenidat HEXAL retardiert",
-        "Methylphenidat Zentiva"
-      ]
-    },
-    {
-      "displayName": "Medikinet",
-      "genericName": "Methylphenidat",
-      "atcCode": "N06BA04",
-      "form": "Tablette",
-      "releaseProfile": "immediate-release",
-      "dosages": [
-        { "value": 5, "unit": "mg", "pzn": null },
-        { "value": 10, "unit": "mg", "pzn": null },
-        { "value": 20, "unit": "mg", "pzn": null }
-      ],
-      "regulatory": {
-        "btm": true,
-        "prescriptionRequired": true
-      },
-      "generics": [
-        "Methylphenidat AL",
-        "Methylphenidat-1A Pharma",
-        "Methylphenidat-ratiopharm",
-        "Methylphenidat HEXAL",
-        "Methylphenidat Sandoz",
-        "Methylphenidat Aristo",
-        "Methylphenidat Heumann",
-        "Methylphenidathydrochlorid-neuraxpharm"
-      ]
-    },
-    {
-      "displayName": "Medikinet retard",
-      "genericName": "Methylphenidat",
-      "atcCode": "N06BA04",
-      "form": "Hartkapsel mit veränderter Wirkstofffreisetzung",
-      "releaseProfile": "extended-release",
-      "dosages": [
-        { "value": 5, "unit": "mg", "pzn": null },
-        { "value": 10, "unit": "mg", "pzn": null },
-        { "value": 20, "unit": "mg", "pzn": null },
-        { "value": 30, "unit": "mg", "pzn": null },
-        { "value": 40, "unit": "mg", "pzn": null }
-      ],
-      "regulatory": {
-        "btm": true,
-        "prescriptionRequired": true
-      },
-      "generics": [
-        "Methylphenidat AL retardiert",
-        "Methylphenidat-ratiopharm",
-        "Methylphenidat HEXAL retardiert",
-        "Methylphenidat Sandoz retardiert",
-        "Methylphenidat Hennig retardiert",
-        "Methylphenidat Zentiva",
-        "Methylphenidathydrochlorid-neuraxpharm retardiert",
-        "Metiphenal"
-      ]
-    },
-    {
-      "displayName": "Medikinet adult",
-      "genericName": "Methylphenidat",
-      "atcCode": "N06BA04",
-      "form": "Hartkapsel mit veränderter Wirkstofffreisetzung",
-      "releaseProfile": "extended-release",
-      "dosages": [
-        { "value": 5, "unit": "mg", "pzn": null },
-        { "value": 10, "unit": "mg", "pzn": null },
-        { "value": 20, "unit": "mg", "pzn": null },
-        { "value": 30, "unit": "mg", "pzn": null },
-        { "value": 40, "unit": "mg", "pzn": null },
-        { "value": 50, "unit": "mg", "pzn": null },
-        { "value": 60, "unit": "mg", "pzn": null }
-      ],
-      "regulatory": {
-        "btm": true,
-        "prescriptionRequired": true
-      },
-      "generics": []
-    },
-    {
-      "displayName": "Concerta",
-      "genericName": "Methylphenidat",
-      "atcCode": "N06BA04",
-      "form": "Retardtablette",
-      "releaseProfile": "extended-release",
-      "dosages": [
-        { "value": 18, "unit": "mg", "pzn": null },
-        { "value": 27, "unit": "mg", "pzn": null },
-        { "value": 36, "unit": "mg", "pzn": null },
-        { "value": 54, "unit": "mg", "pzn": null }
-      ],
-      "regulatory": {
-        "btm": true,
-        "prescriptionRequired": true
-      },
-      "generics": [
-        "Kinecteen",
-        "Methylphenidat-HCl-ratiopharm Retardtabletten",
-        "Methylphenidathydrochlorid-neuraxpharm Retardtabletten",
-        "Methylphenidat AL Retardtabletten",
-        "Methylphenidat Heumann Retardtabletten"
-      ]
-    },
-    {
-      "displayName": "Equasym retard",
-      "genericName": "Methylphenidat",
-      "atcCode": "N06BA04",
-      "form": "Hartkapsel mit veränderter Wirkstofffreisetzung",
-      "releaseProfile": "extended-release",
-      "dosages": [
-        { "value": 10, "unit": "mg", "pzn": null },
-        { "value": 20, "unit": "mg", "pzn": null },
-        { "value": 30, "unit": "mg", "pzn": null }
-      ],
-      "regulatory": {
-        "btm": true,
-        "prescriptionRequired": true
-      },
-      "generics": []
-    },
-    {
-      "displayName": "Strattera",
-      "genericName": "Atomoxetin",
-      "atcCode": "N06BA09",
-      "form": "Hartkapsel",
-      "releaseProfile": "immediate-release",
-      "dosages": [
-        { "value": 10, "unit": "mg", "pzn": null },
-        { "value": 18, "unit": "mg", "pzn": null },
-        { "value": 25, "unit": "mg", "pzn": null },
-        { "value": 40, "unit": "mg", "pzn": null },
-        { "value": 60, "unit": "mg", "pzn": null },
-        { "value": 80, "unit": "mg", "pzn": null },
-        { "value": 100, "unit": "mg", "pzn": null }
-      ],
-      "regulatory": {
-        "btm": false,
-        "prescriptionRequired": true
-      },
-      "generics": [
-        "Atomoxetin-1A Pharma",
-        "Atomoxetin Accord",
-        "Atomoxetin AL",
-        "Atomoxetin betapharm",
-        "Atomoxetin Glenmark",
-        "Atomoxetin HEXAL",
-        "Atomoxetin Heumann",
-        "Atomoxetin neuraxpharm",
-        "Atomoxetin Puren",
-        "Atomoxetin-ratiopharm",
-        "Atomoxetin Zentiva"
-      ]
-    },
-    {
-      "displayName": "Strattera",
-      "genericName": "Atomoxetin",
-      "atcCode": "N06BA09",
-      "form": "Lösung zum Einnehmen",
-      "releaseProfile": "immediate-release",
-      "dosages": [
-        { "value": 4, "unit": "mg/ml", "pzn": null }
-      ],
-      "regulatory": {
-        "btm": false,
-        "prescriptionRequired": true
-      },
-      "generics": []
-    },
-    {
-      "displayName": "Intuniv",
-      "genericName": "Guanfacin",
-      "atcCode": "C02AC02",
-      "form": "Retardtablette",
-      "releaseProfile": "extended-release",
-      "dosages": [
-        { "value": 1, "unit": "mg", "pzn": null },
-        { "value": 2, "unit": "mg", "pzn": null },
-        { "value": 3, "unit": "mg", "pzn": null },
-        { "value": 4, "unit": "mg", "pzn": null }
-      ],
-      "regulatory": {
-        "btm": false,
-        "prescriptionRequired": true
-      },
-      "generics": []
-    },
-    {
-      "displayName": "Elontril",
-      "genericName": "Bupropion",
-      "atcCode": "N06AX12",
-      "form": "Retardtablette",
-      "releaseProfile": "extended-release",
-      "dosages": [
-        { "value": 150, "unit": "mg", "pzn": null },
-        { "value": 300, "unit": "mg", "pzn": null }
-      ],
-      "regulatory": {
-        "btm": false,
-        "prescriptionRequired": true,
-        "offLabelForADHD": true
-      },
-      "generics": [
-        "Bupropion-neuraxpharm",
-        "Bupropion Bluefish"
+      "id": "antidepressants",
+      "displayName": "Antidepressiva",
+      "medications": [
+        {
+          "displayName": "Zoloft",
+          "genericName": "Sertralin",
+          "atcCode": "N06AB06",
+          "subclass": "SSRI",
+          "form": "Filmtablette",
+          "releaseProfile": "immediate-release",
+          "dosages": [
+            { "value": 50, "unit": "mg", "pzn": null },
+            { "value": 100, "unit": "mg", "pzn": null }
+          ],
+          "regulatory": { "btm": false, "prescriptionRequired": true },
+          "generics": [
+            "Sertralin-1A Pharma",
+            "Sertralin AL",
+            "Sertralin Aurobindo",
+            "Sertralin HEXAL",
+            "Sertralin Heumann",
+            "Sertralin-neuraxpharm",
+            "Sertralin-ratiopharm",
+            "Sertralin Zentiva"
+          ]
+        },
+        {
+          "displayName": "Cipramil",
+          "genericName": "Citalopram",
+          "atcCode": "N06AB04",
+          "subclass": "SSRI",
+          "form": "Filmtablette",
+          "releaseProfile": "immediate-release",
+          "dosages": [
+            { "value": 10, "unit": "mg", "pzn": null },
+            { "value": 20, "unit": "mg", "pzn": null },
+            { "value": 40, "unit": "mg", "pzn": null }
+          ],
+          "regulatory": { "btm": false, "prescriptionRequired": true },
+          "generics": [
+            "Citalopram-1A Pharma",
+            "Citalopram AL",
+            "Citalopram HEXAL",
+            "Citalopram Heumann",
+            "Citalopram-neuraxpharm",
+            "Citalopram-ratiopharm",
+            "Citalopram Sandoz",
+            "Citalopram Zentiva"
+          ]
+        },
+        {
+          "displayName": "Cipramil",
+          "genericName": "Citalopram",
+          "atcCode": "N06AB04",
+          "subclass": "SSRI",
+          "form": "Tropfen zum Einnehmen, Lösung",
+          "releaseProfile": "immediate-release",
+          "dosages": [
+            { "value": 40, "unit": "mg/ml", "pzn": null }
+          ],
+          "regulatory": { "btm": false, "prescriptionRequired": true },
+          "generics": []
+        },
+        {
+          "displayName": "Cipralex",
+          "genericName": "Escitalopram",
+          "atcCode": "N06AB10",
+          "subclass": "SSRI",
+          "form": "Filmtablette",
+          "releaseProfile": "immediate-release",
+          "dosages": [
+            { "value": 5, "unit": "mg", "pzn": null },
+            { "value": 10, "unit": "mg", "pzn": null },
+            { "value": 15, "unit": "mg", "pzn": null },
+            { "value": 20, "unit": "mg", "pzn": null }
+          ],
+          "regulatory": { "btm": false, "prescriptionRequired": true },
+          "generics": [
+            "Escitalopram-1A Pharma",
+            "Escitalopram AL",
+            "Escitalopram Aurobindo",
+            "Escitalopram beta",
+            "Escitalopram HEXAL",
+            "Escitalopram Heumann",
+            "Escitalopram-neuraxpharm",
+            "Escitalopram-ratiopharm",
+            "Escitalopram Zentiva"
+          ]
+        },
+        {
+          "displayName": "Cipralex",
+          "genericName": "Escitalopram",
+          "atcCode": "N06AB10",
+          "subclass": "SSRI",
+          "form": "Tropfen zum Einnehmen, Lösung",
+          "releaseProfile": "immediate-release",
+          "dosages": [
+            { "value": 20, "unit": "mg/ml", "pzn": null }
+          ],
+          "regulatory": { "btm": false, "prescriptionRequired": true },
+          "generics": []
+        },
+        {
+          "displayName": "Fluctin",
+          "genericName": "Fluoxetin",
+          "atcCode": "N06AB03",
+          "subclass": "SSRI",
+          "form": "Hartkapsel",
+          "releaseProfile": "immediate-release",
+          "dosages": [
+            { "value": 20, "unit": "mg", "pzn": null }
+          ],
+          "regulatory": { "btm": false, "prescriptionRequired": true },
+          "generics": [
+            "Fluoxetin-1A Pharma",
+            "Fluoxetin AL",
+            "Fluoxetin HEXAL",
+            "Fluoxetin Heumann",
+            "Fluoxetin-neuraxpharm",
+            "Fluoxetin-ratiopharm"
+          ]
+        },
+        {
+          "displayName": "Seroxat",
+          "genericName": "Paroxetin",
+          "atcCode": "N06AB05",
+          "subclass": "SSRI",
+          "form": "Filmtablette",
+          "releaseProfile": "immediate-release",
+          "dosages": [
+            { "value": 20, "unit": "mg", "pzn": null },
+            { "value": 30, "unit": "mg", "pzn": null },
+            { "value": 40, "unit": "mg", "pzn": null }
+          ],
+          "regulatory": { "btm": false, "prescriptionRequired": true },
+          "generics": [
+            "Paroxetin-1A Pharma",
+            "Paroxetin AL",
+            "Paroxetin beta",
+            "Paroxetin HEXAL",
+            "Paroxetin Heumann",
+            "Paroxetin-neuraxpharm",
+            "Paroxetin-ratiopharm"
+          ]
+        },
+        {
+          "displayName": "Fevarin",
+          "genericName": "Fluvoxamin",
+          "atcCode": "N06AB08",
+          "subclass": "SSRI",
+          "form": "Filmtablette",
+          "releaseProfile": "immediate-release",
+          "dosages": [
+            { "value": 50, "unit": "mg", "pzn": null },
+            { "value": 100, "unit": "mg", "pzn": null }
+          ],
+          "regulatory": { "btm": false, "prescriptionRequired": true },
+          "generics": [
+            "Fluvoxamin-neuraxpharm",
+            "Fluvoxamin-ratiopharm"
+          ]
+        },
+        {
+          "displayName": "Trevilor retard",
+          "genericName": "Venlafaxin",
+          "atcCode": "N06AX16",
+          "subclass": "SNRI",
+          "form": "Hartkapsel mit veränderter Wirkstofffreisetzung",
+          "releaseProfile": "extended-release",
+          "dosages": [
+            { "value": 37.5, "unit": "mg", "pzn": null },
+            { "value": 75, "unit": "mg", "pzn": null },
+            { "value": 150, "unit": "mg", "pzn": null },
+            { "value": 225, "unit": "mg", "pzn": null }
+          ],
+          "regulatory": { "btm": false, "prescriptionRequired": true },
+          "generics": [
+            "Venlafaxin-1A Pharma",
+            "Venlafaxin AL",
+            "Venlafaxin Aurobindo",
+            "Venlafaxin beta",
+            "Venlafaxin HEXAL",
+            "Venlafaxin Heumann",
+            "Venlafaxin-neuraxpharm",
+            "Venlafaxin-ratiopharm",
+            "Venlafaxin Zentiva"
+          ]
+        },
+        {
+          "displayName": "Cymbalta",
+          "genericName": "Duloxetin",
+          "atcCode": "N06AX21",
+          "subclass": "SNRI",
+          "form": "magensaftresistente Hartkapsel",
+          "releaseProfile": "delayed-release",
+          "dosages": [
+            { "value": 30, "unit": "mg", "pzn": null },
+            { "value": 60, "unit": "mg", "pzn": null }
+          ],
+          "regulatory": { "btm": false, "prescriptionRequired": true },
+          "generics": [
+            "Duloxetin-1A Pharma",
+            "Duloxetin AL",
+            "Duloxetin beta",
+            "Duloxetin HEXAL",
+            "Duloxetin Heumann",
+            "Duloxetin-neuraxpharm",
+            "Duloxetin-ratiopharm",
+            "Duloxetin Zentiva"
+          ]
+        },
+        {
+          "displayName": "Remergil SolTab",
+          "genericName": "Mirtazapin",
+          "atcCode": "N06AX11",
+          "subclass": "NaSSA",
+          "form": "Schmelztablette",
+          "releaseProfile": "immediate-release",
+          "dosages": [
+            { "value": 15, "unit": "mg", "pzn": null },
+            { "value": 30, "unit": "mg", "pzn": null },
+            { "value": 45, "unit": "mg", "pzn": null }
+          ],
+          "regulatory": { "btm": false, "prescriptionRequired": true },
+          "generics": [
+            "Mirtazapin-1A Pharma",
+            "Mirtazapin AL",
+            "Mirtazapin beta",
+            "Mirtazapin HEXAL",
+            "Mirtazapin Heumann",
+            "Mirtazapin-neuraxpharm",
+            "Mirtazapin-ratiopharm"
+          ]
+        },
+        {
+          "displayName": "Remergil",
+          "genericName": "Mirtazapin",
+          "atcCode": "N06AX11",
+          "subclass": "NaSSA",
+          "form": "Filmtablette",
+          "releaseProfile": "immediate-release",
+          "dosages": [
+            { "value": 15, "unit": "mg", "pzn": null },
+            { "value": 30, "unit": "mg", "pzn": null },
+            { "value": 45, "unit": "mg", "pzn": null }
+          ],
+          "regulatory": { "btm": false, "prescriptionRequired": true },
+          "generics": []
+        },
+        {
+          "displayName": "Trittico retard",
+          "genericName": "Trazodon",
+          "atcCode": "N06AX05",
+          "subclass": "SARI",
+          "form": "Retardtablette",
+          "releaseProfile": "extended-release",
+          "dosages": [
+            { "value": 75, "unit": "mg", "pzn": null },
+            { "value": 150, "unit": "mg", "pzn": null }
+          ],
+          "regulatory": { "btm": false, "prescriptionRequired": true },
+          "generics": [
+            "Trazodon-neuraxpharm",
+            "Trazodon HEXAL"
+          ]
+        },
+        {
+          "displayName": "Elontril",
+          "genericName": "Bupropion",
+          "atcCode": "N06AX12",
+          "subclass": "NDRI",
+          "form": "Retardtablette",
+          "releaseProfile": "extended-release",
+          "dosages": [
+            { "value": 150, "unit": "mg", "pzn": null },
+            { "value": 300, "unit": "mg", "pzn": null }
+          ],
+          "regulatory": {
+            "btm": false,
+            "prescriptionRequired": true,
+            "offLabelForADHD": true
+          },
+          "generics": [
+            "Bupropion-neuraxpharm",
+            "Bupropion Bluefish"
+          ]
+        },
+        {
+          "displayName": "Valdoxan",
+          "genericName": "Agomelatin",
+          "atcCode": "N06AX22",
+          "subclass": "Melatonerg",
+          "form": "Filmtablette",
+          "releaseProfile": "immediate-release",
+          "dosages": [
+            { "value": 25, "unit": "mg", "pzn": null }
+          ],
+          "regulatory": { "btm": false, "prescriptionRequired": true },
+          "generics": [
+            "Agomelatin Heumann",
+            "Agomelatin-neuraxpharm",
+            "Agomelatin Zentiva"
+          ]
+        },
+        {
+          "displayName": "Brintellix",
+          "genericName": "Vortioxetin",
+          "atcCode": "N06AX26",
+          "subclass": "Multimodal",
+          "form": "Filmtablette",
+          "releaseProfile": "immediate-release",
+          "dosages": [
+            { "value": 5, "unit": "mg", "pzn": null },
+            { "value": 10, "unit": "mg", "pzn": null },
+            { "value": 15, "unit": "mg", "pzn": null },
+            { "value": 20, "unit": "mg", "pzn": null }
+          ],
+          "regulatory": { "btm": false, "prescriptionRequired": true },
+          "generics": []
+        },
+        {
+          "displayName": "Saroten",
+          "genericName": "Amitriptylin",
+          "atcCode": "N06AA09",
+          "subclass": "TCA",
+          "form": "Filmtablette",
+          "releaseProfile": "immediate-release",
+          "dosages": [
+            { "value": 10, "unit": "mg", "pzn": null },
+            { "value": 25, "unit": "mg", "pzn": null },
+            { "value": 50, "unit": "mg", "pzn": null }
+          ],
+          "regulatory": { "btm": false, "prescriptionRequired": true },
+          "generics": [
+            "Amineurin",
+            "Amitriptylin-neuraxpharm",
+            "Amitriptylin HEXAL",
+            "Amitriptylin-CT"
+          ]
+        },
+        {
+          "displayName": "Saroten retard",
+          "genericName": "Amitriptylin",
+          "atcCode": "N06AA09",
+          "subclass": "TCA",
+          "form": "Retardtablette",
+          "releaseProfile": "extended-release",
+          "dosages": [
+            { "value": 25, "unit": "mg", "pzn": null },
+            { "value": 50, "unit": "mg", "pzn": null },
+            { "value": 75, "unit": "mg", "pzn": null }
+          ],
+          "regulatory": { "btm": false, "prescriptionRequired": true },
+          "generics": [
+            "Amineurin retard",
+            "Amitriptylin-neuraxpharm retard"
+          ]
+        },
+        {
+          "displayName": "Anafranil",
+          "genericName": "Clomipramin",
+          "atcCode": "N06AA04",
+          "subclass": "TCA",
+          "form": "Filmtablette",
+          "releaseProfile": "immediate-release",
+          "dosages": [
+            { "value": 10, "unit": "mg", "pzn": null },
+            { "value": 25, "unit": "mg", "pzn": null }
+          ],
+          "regulatory": { "btm": false, "prescriptionRequired": true },
+          "generics": [
+            "Clomipramin-neuraxpharm"
+          ]
+        },
+        {
+          "displayName": "Anafranil retard",
+          "genericName": "Clomipramin",
+          "atcCode": "N06AA04",
+          "subclass": "TCA",
+          "form": "Retardtablette",
+          "releaseProfile": "extended-release",
+          "dosages": [
+            { "value": 75, "unit": "mg", "pzn": null }
+          ],
+          "regulatory": { "btm": false, "prescriptionRequired": true },
+          "generics": [
+            "Clomipramin-neuraxpharm retard"
+          ]
+        },
+        {
+          "displayName": "Aponal",
+          "genericName": "Doxepin",
+          "atcCode": "N06AA12",
+          "subclass": "TCA",
+          "form": "Filmtablette",
+          "releaseProfile": "immediate-release",
+          "dosages": [
+            { "value": 10, "unit": "mg", "pzn": null },
+            { "value": 25, "unit": "mg", "pzn": null },
+            { "value": 50, "unit": "mg", "pzn": null },
+            { "value": 75, "unit": "mg", "pzn": null },
+            { "value": 100, "unit": "mg", "pzn": null }
+          ],
+          "regulatory": { "btm": false, "prescriptionRequired": true },
+          "generics": [
+            "Doxepin-1A Pharma",
+            "Doxepin AL",
+            "Doxepin-neuraxpharm",
+            "Doxepin-ratiopharm",
+            "Doxepin HEXAL"
+          ]
+        },
+        {
+          "displayName": "Stangyl",
+          "genericName": "Trimipramin",
+          "atcCode": "N06AA06",
+          "subclass": "TCA",
+          "form": "Tablette",
+          "releaseProfile": "immediate-release",
+          "dosages": [
+            { "value": 25, "unit": "mg", "pzn": null },
+            { "value": 100, "unit": "mg", "pzn": null }
+          ],
+          "regulatory": { "btm": false, "prescriptionRequired": true },
+          "generics": [
+            "Trimipramin-1A Pharma",
+            "Trimipramin AL",
+            "Trimipramin-neuraxpharm",
+            "Trimipramin-ratiopharm"
+          ]
+        },
+        {
+          "displayName": "Stangyl",
+          "genericName": "Trimipramin",
+          "atcCode": "N06AA06",
+          "subclass": "TCA",
+          "form": "Tropfen zum Einnehmen, Lösung",
+          "releaseProfile": "immediate-release",
+          "dosages": [
+            { "value": 40, "unit": "mg/ml", "pzn": null }
+          ],
+          "regulatory": { "btm": false, "prescriptionRequired": true },
+          "generics": []
+        },
+        {
+          "displayName": "Aurorix",
+          "genericName": "Moclobemid",
+          "atcCode": "N06AG02",
+          "subclass": "MAOI",
+          "form": "Filmtablette",
+          "releaseProfile": "immediate-release",
+          "dosages": [
+            { "value": 150, "unit": "mg", "pzn": null },
+            { "value": 300, "unit": "mg", "pzn": null }
+          ],
+          "regulatory": { "btm": false, "prescriptionRequired": true },
+          "generics": [
+            "Moclobemid-1A Pharma",
+            "Moclobemid AL",
+            "Moclobemid-neuraxpharm",
+            "Moclobemid-ratiopharm"
+          ]
+        },
+        {
+          "displayName": "Jatrosom",
+          "genericName": "Tranylcypromin",
+          "atcCode": "N06AF04",
+          "subclass": "MAOI",
+          "form": "überzogene Tablette",
+          "releaseProfile": "immediate-release",
+          "dosages": [
+            { "value": 10, "unit": "mg", "pzn": null }
+          ],
+          "regulatory": { "btm": false, "prescriptionRequired": true },
+          "generics": []
+        }
       ]
     }
   ]
